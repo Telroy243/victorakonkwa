@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Victor</title>
+  <style>
+    /* ====== RESET ====== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #0a0a0af2, #1a1a1a);
+      color: #fff;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { text-decoration: none; }
+
+    /* ====== HEADER ====== */
+    header {
+      padding: 15px 25px;
+      background: rgba(0, 0, 0, 0.85);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #004e75;
+    }
+
+    /* ====== MAIN ====== */
+    main {
+      flex: 1; /* prend tout l’espace disponible pour pousser le footer en bas */
+      padding: 120px 20px 50px;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      color: #004e75;
+    }
+
+    p {
+      margin-bottom: 25px;
+      font-size: 1.1rem;
+      color: #ddd;
+    }
+
+    /* ====== BUTTONS ====== */
+    .btn {
+      display: inline-block;
+      margin: 15px 10px;
+      padding: 12px 25px;
+      background: #004e75;
+      color: #000;
+      font-weight: bold;
+      border-radius: 30px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #fff;
+      color: #000;
+      transform: scale(1.05);
+    }
+
+    /* ====== FOOTER ====== */
+    footer {
+      background: #0d0d0d;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    /* ====== RESPONSIVE ====== */
+    @media (max-width: 768px) {
+      main {
+        padding: 100px 15px 50px;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="logo">Victor</div>
+  </header>
+
+  <main>
+    <h1>Contactez-moi</h1>
+    <p>Pour toute demande, vous pouvez me contacter via email ou WhatsApp :</p>
+
+    <a href="mailto:victorakonkwa2004@gmail.com" class="btn">Envoyer un email</a>
+    <a href="https://wa.me/243971884722" class="btn" target="_blank">WhatsApp</a>
+
+    <p>Ou retournez à l'accueil pour découvrir plus de mon travail.</p>
+    <a href="index.html" class="btn">Retour à l'accueil</a>
+  </main>
+
+  <footer>
+    <p>© 2025 Victor Akonkwa – Tous droits réservés</p>
+  </footer>
+
+</body>
+</html>
