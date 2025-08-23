@@ -3,135 +3,290 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3D Designer & Web Designer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <title>Portfolio - Victor</title>
   <style>
-    /* Style général */
+    /* ====== RESET ====== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: url('images/fond.png') no-repeat center center fixed;
-      background-size: cover;
-      color: #fdff93ca;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+      color: #ffffff;
+      overflow-x: hidden;
     }
-    .container {
-      background: rgba(0, 0, 0, 0.7);
-      margin: 0 auto;
-      padding: 20px;
-      max-width: 900px;
-      backdrop-filter: blur(5px);
-      border-radius: 10px;
-    }
-    /* En-tête */
+
+    a { text-decoration: none; }
+
+    /* ====== HEADER ====== */
     header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 15px 25px;
+      background: rgba(0, 0, 0, 0.85);
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      padding: 30px 20px;
+      align-items: center;
+      z-index: 1000;
     }
-    header h1 {
-      font-size: 2.8em;
-      color: #0f2eaa;
-      margin: 0;
-      font-weight: 600;
-      opacity: 0;
-      animation: fadeIn 1.5s ease-in-out forwards;
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #004e75;
     }
-    header img {
-      width: 125px;
-      height: 125px;
-      border-radius: 50%;
-      border: 2px solid #4e4444;
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
     }
-    /* Animation fade-in */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
+
+    nav ul li a {
+      color: #fff;
+      font-weight: 500;
+      transition: color 0.3s;
     }
-    /* Sections */
-    section {
-      padding: 40px 20px;
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #004e75;
     }
-    h2 {
-      color: #915e00;
-      border-bottom: 2px solid #d80707;
-      padding-bottom: 10px;
-    }
-    /* Effets hover sur images */
-    img:hover {
-      transform: scale(1.05);
-      transition: 0.3s;
-    }
-    /* Taille spécifique pour l'image de l'addon */
-    section#addon img {
-      width: 300px;  /* Définir une largeur spécifique de 350px */
-      height: auto;  /* La hauteur s'ajuste proportionnellement */
-    }
-    /* Style des boutons */
+
+    /* ====== HERO ====== */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 20px 40px;
+  gap: 50px;
+  flex-wrap: wrap;
+  
+  /* Image en fond */
+  background: url("moi.png") no-repeat center center/cover;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6); /* assombrit l'image pour meilleure lisibilité */
+  z-index: 0;
+}
+
+.hero-photo,
+.hero-content {
+  position: relative; /* pour que le texte et la photo restent visibles par-dessus le fond */
+  z-index: 1;
+}
+
     .btn {
       display: inline-block;
-      margin-top: 10px;
-      padding: 10px 20px;
-      background: #a92e01;
-      color: #fff;
-      text-align: center;
-      text-decoration: none;
+      padding: 12px 25px;
+      background: #004e75;
+      color: #c2bc07;
       font-weight: bold;
-      border-radius: 5px;
+      border-radius: 30px;
       transition: 0.3s;
     }
+
     .btn:hover {
-      background: #ff2200;
+      background: #fff;
+      color: #000;
+      transform: scale(1.05);
     }
-    /* Responsive */
-    @media(max-width: 768px) {
-      header {
+
+    .hero-photo img {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #5d4a02;
+      box-shadow: 0px 0px 25px rgba(250, 204, 21, 0.6);
+    }
+
+    .hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 15px;
+  justify-content: center; /* centré sur mobile et desktop */
+}
+
+
+    /* ====== FOOTER ====== */
+    footer {
+      background: #0d0d0d;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    /* ====== MENU HAMBURGER ====== */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: #fff;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: rgba(0, 0, 0, 0.95);
+        flex-direction: column;
+        padding: 15px;
+        border-radius: 8px;
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .hero {
         flex-direction: column;
         text-align: center;
+        padding-top: 120px;
       }
-      header h1 {
-        font-size: 2.2em;
+
+      .hero-content {
+        text-align: center;
+      }
+
+      .hero-photo img {
+        width: 200px;
+        height: 200px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>3D Designer & Web Designer</h1>
-      <img src="images/moi.png" alt="Photo de moi">
-    </header>
-    
-    <section id="presentation">
-      <h2>À propos de moi</h2>
-      <p>Je suis un passionné de <strong>design 3D et de création web</strong>. Mon objectif est de donner vie à des projets artistiques en 3D tout en développant des sites modernes et performants.</p>
-    </section>
-    
-    <section id="addon">
-      <h2>Addon Blender : Viewport Color Pro</h2>
-      <div>
-        <img src="images/addon.PNG" alt="Viewport Color Pro">
-        <a href="https://gum.co/kqtxj" class="btn" target="_blank">Obtenir</a>
-      </div>
-      <p><strong>Viewport Color Pro</strong> <p><strong>Viewport Color Pro</strong> est un addon innovant pour Blender qui révolutionne la gestion des couleurs dans le viewport.</p>
-      <p>Grâce à son interface intuitive, il permet d’ajuster les couleurs et d’obtenir une prévisualisation en temps réel.</p>
-      <p>Idéal pour les professionnels, cet addon simplifie le workflow et garantit des rendus de haute qualité.</p>
-    </section>
 
-    <section id="web-design">
-      <h2>Création de sites web</h2>
-      <p>En tant que web designer, je conçois des sites modernes, adaptés aux besoins des entreprises et des particuliers.</p>
-      <p>Que ce soit pour un portfolio, un site e-commerce, ou un blog professionnel, je propose des designs uniques et optimisés.</p>
-      <div class="contact">
-        <p><strong>Contact :</strong></p>
-        <p>📱 WhatsApp : <a href="https://wa.me/243997105634" target="_blank">+243 997 105 634</a></p>
-        <p>📧 Gmail : <a href="mailto:victorakonkwa2004@gmail.com">victorakonkwa2004@gmail.com</a></p>
-      </div>
-    </section>
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="logo">Victor</div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav>
+      <ul id="nav-links">
+        <li><a href="index.html" class="active">Accueil</a></li>
+        <li><a href="parcours.html">Parcours scolaire</a></li>
+        <li><a href="projets.html">Projets & Expérience</a></li>
+        <li><a href="competences.html">Compétences</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <footer>
-      <p>&copy; 2025 3D Designer & Web Designer. Tous droits réservés.</p>
-    </footer>
+<!-- ===== HERO SECTION ===== -->
+<section class="hero">
+  <!-- Photo circulaire supprimée -->
+  <!--
+  <div class="hero-photo">
+    <img src="moi.png" alt="Photo de Victor">
   </div>
+  -->
+
+    <!-- Texte -->
+    <div class="hero-content">
+      <h1>Salut, je suis <span>Victor</span> </h1>
+      <h2><span id="typing"></span></h2>
+      <p>
+        Passionné par la science et la technologie, je combine mes compétences en <b>chimie</b>, 
+        en <b>électronique</b>, en <b>cybersécurité</b>, en <b>développement web</b> et en <b>design 3D</b> 
+        pour créer des solutions innovantes et uniques.  
+        Curieux et créatif, je cherche toujours à apprendre et à repousser mes limites.
+      </p>
+   </div>
+    <div class="hero-content">
+
+  <h2><span id="typing"></span></h2>
+
+
+  <!-- Boutons -->
+  <div class="hero-buttons">
+    <a href="parcours.html" class="btn">Parcours scolaire</a>
+    <a href="projets.html" class="btn">Projets & Expérience</a>
+    <a href="competences.html" class="btn">Compétences</a>
+    <a href="contact.html" class="btn">Contact</a>
+  </div>
+</div>
+
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>© 2025 Victor Akonkwa – Tous droits réservés</p>
+  </footer>
+
+  <!-- ===== SCRIPT JS ===== -->
+  <script>
+    const roles = [
+      "Chimiste de laboratoire",
+      "Électronicien concepteur",
+      "Pentester",
+      "Créateur de sites web",
+      "Designer 3D"
+    ];
+
+    let i = 0;
+    let j = 0;
+    let currentRole = "";
+    let isDeleting = false;
+    const typingElement = document.getElementById("typing");
+
+    function typeEffect() {
+      if (i < roles.length) {
+        if (!isDeleting && j <= roles[i].length) {
+          currentRole = roles[i].substring(0, j++);
+          typingElement.textContent = currentRole;
+          setTimeout(typeEffect, 100);
+        } else if (isDeleting && j >= 0) {
+          currentRole = roles[i].substring(0, j--);
+          typingElement.textContent = currentRole;
+          setTimeout(typeEffect, 50);
+        } else {
+          isDeleting = !isDeleting;
+          if (!isDeleting) i++;
+          if (i >= roles.length) i = 0;
+          setTimeout(typeEffect, 1000);
+        }
+      }
+    }
+    typeEffect();
+
+    // === Menu mobile ===
+    function toggleMenu() {
+      document.getElementById("nav-links").classList.toggle("show");
+    }
+  </script>
 </body>
 </html>
