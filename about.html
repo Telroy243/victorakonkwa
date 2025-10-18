@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>À propos - Victor Akonkwa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent: #003d7a;
+      --bg: #dbdbdb;
+      --text: #222;
+      --light-text: #555;
+      --transition: 0.4s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+      opacity: 0;
+      animation: fadeIn 1.2s ease forwards;
+    }
+
+    header {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      z-index: 1000;
+    }
+
+    .menu-icon {
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      transition: transform var(--transition);
+    }
+
+    .menu-icon:hover {
+      transform: scale(1.1);
+    }
+
+    main {
+      max-width: 950px;
+      margin: 100px auto 60px;
+      padding: 0 20px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: var(--accent);
+      text-align: center;
+      margin-bottom: 40px;
+      font-weight: 600;
+    }
+
+    section {
+      margin-bottom: 50px;
+      animation: fadeInUp 1s ease both;
+    }
+
+    section h2 {
+      font-size: 1.4rem;
+      color: var(--accent);
+      margin-bottom: 12px;
+      font-weight: 600;
+      position: relative;
+    }
+
+    section h2::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 40px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+
+    p {
+      color: var(--light-text);
+      font-size: 1rem;
+      text-align: justify;
+    }
+
+    /* === Compétences === */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .badge {
+      background: #e7f1ff;
+      color: var(--accent);
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .badge:hover {
+      background: var(--accent);
+      color: #fff;
+      transform: translateY(-3px);
+    }
+
+    /* === Langues === */
+    .languages {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 10px;
+    }
+
+    .language {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-left: 5px solid var(--accent);
+      padding: 10px 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      width: calc(50% - 20px);
+      transition: transform var(--transition);
+    }
+
+    .language:hover {
+      transform: translateY(-4px);
+    }
+
+    .language span {
+      color: var(--light-text);
+      font-size: 0.9rem;
+    }
+
+    /* === Menu superposé === */
+    #menuOverlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    #menuOverlay iframe {
+      width: 90%;
+      height: 85%;
+      border: none;
+      border-radius: 12px;
+      background: white;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    #closeMenu {
+      position: absolute;
+      top: 25px;
+      right: 40px;
+      color: white;
+      font-size: 2.2rem;
+      cursor: pointer;
+      font-weight: 300;
+      z-index: 10000;
+    }
+
+    /* === Animations === */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 700px) {
+      main { margin-top: 80px; }
+      h1 { font-size: 1.6rem; }
+      .language { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+
+
+  <main>
+    <h1>À propos de moi</h1>
+
+    <section id="parcours">
+      <h2>Parcours professionnel</h2>
+      <p>
+        Passionné par la technologie et le développement, j’ai construit mon parcours autour de la création de solutions numériques performantes. 
+        De la conception front-end élégante à l’architecture back-end robuste, j’ai travaillé sur divers projets web, mobiles et logiciels, 
+        toujours avec une exigence de qualité et de clarté dans le code. Mon objectif : transformer une idée en produit fiable, fluide et intuitif.
+      </p>
+    </section>
+
+    <section id="competences">
+      <h2>Compétences techniques</h2>
+      <div class="skills">
+        <span class="badge">HTML5</span>
+        <span class="badge">CSS3</span>
+        <span class="badge">JavaScript</span>
+        <span class="badge">PHP</span>
+        <span class="badge">SQL / MySQL</span>
+        <span class="badge">Python</span>
+        <span class="badge">Flutter / Dart</span>
+        <span class="badge">C++</span>
+        <span class="badge">UI/UX Design</span>
+        <span class="badge">Analyse de données</span>
+      </div>
+    </section>
+
+    <section id="valeurs">
+      <h2>Valeurs professionnelles</h2>
+      <p>
+        Intégrité, rigueur et innovation : je crois qu’un bon développeur ne se limite pas au code, 
+        mais construit une expérience solide et durable à chaque projet.
+      </p>
+    </section>
+
+    <section id="approche">
+      <h2>Approche de travail</h2>
+      <p>
+        J’adopte une méthode claire et structurée : compréhension précise du besoin, conception réfléchie, 
+        puis développement itératif et test rigoureux. Mon approche allie logique, créativité et souci du détail, 
+        avec une communication transparente à chaque étape du projet.
+      </p>
+    </section>
+
+    <section id="langues">
+      <h2>Langues</h2>
+      <div class="languages">
+        <div class="language">
+          <strong>Français</strong><br><span>Courant</span>
+        </div>
+        <div class="language">
+          <strong>Anglais</strong><br><span>Niveau intermédiaire (écrit et oral)</span>
+        </div>
+        <div class="language">
+          <strong>Swahili</strong><br><span>Langue maternelle</span>
+        </div>
+        <div class="language">
+          <strong>Espagnol</strong><br><span>Débutant</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+
+  <script>
+    const openMenu = document.getElementById('openMenu');
+    const closeMenu = document.getElementById('closeMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+
+    openMenu.addEventListener('click', () => {
+      menuOverlay.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    });
+
+    closeMenu.addEventListener('click', () => {
+      menuOverlay.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    });
+
+    // Ferme le menu en cliquant en dehors
+    window.addEventListener('click', (e) => {
+      if (e.target === menuOverlay) {
+        menuOverlay.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    });
+  </script>
+</body>
+</html>

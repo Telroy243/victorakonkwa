@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accueil - Portfolio Victor Akonkwa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent: #003f83;
+      --bg: #d8d8d8;
+      --text: #222;
+      --light-text: #666;
+      --transition: 0.4s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+      opacity: 0;
+      animation: fadeIn 1.5s ease forwards;
+    }
+
+    header {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      z-index: 1000;
+    }
+
+    .menu-icon {
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      transition: transform var(--transition);
+    }
+
+    .menu-icon:hover {
+      transform: scale(1.1);
+    }
+
+    main {
+      text-align: center;
+      max-width: 700px;
+      padding: 20px;
+    }
+
+    .profile-photo {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent);
+      margin-bottom: 20px;
+      transition: transform var(--transition);
+    }
+
+    .profile-photo:hover {
+      transform: scale(1.05);
+    }
+
+    h1 {
+      font-weight: 600;
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .slogan {
+      color: var(--light-text);
+      font-size: 1.1rem;
+      margin-bottom: 25px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background-color: var(--accent);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color var(--transition);
+    }
+
+    .cta-button:hover {
+      background-color: #0056c9;
+    }
+
+    .skills-badge {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .badge {
+      background: #e3f0ff;
+      color: var(--accent);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    /* === Superposition du menu === */
+    #menuOverlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    #menuOverlay iframe {
+      width: 90%;
+      height: 85%;
+      border: none;
+      border-radius: 12px;
+      background: white;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    #closeMenu {
+      position: absolute;
+      top: 25px;
+      right: 40px;
+      color: white;
+      font-size: 2.2rem;
+      cursor: pointer;
+      font-weight: 300;
+      z-index: 10000;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 1.5rem; }
+      .slogan { font-size: 1rem; }
+      .profile-photo { width: 120px; height: 120px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="menu.png" alt="Menu" class="menu-icon" id="openMenu">
+  </header>
+
+  <main>
+    <img src="moi.png" alt="Photo de profil" class="profile-photo">
+    <h1>Salut, je suis <strong>Victor Akonkwa</strong>, développeur expert.</h1>
+    <p class="slogan">Créateur de solutions web et mobiles multi-langages.</p>
+    <a href="contact.html" class="cta-button">Me contacter</a>
+
+    <div class="skills-badge">
+      <span class="badge">HTML</span>
+      <span class="badge">CSS</span>
+      <span class="badge">JavaScript</span>
+      <span class="badge">PHP</span>
+      <span class="badge">SQL</span>
+      <span class="badge">Flutter</span>
+      <span class="badge">Dart</span>
+      <span class="badge">Python</span>
+      <span class="badge">C++</span>
+    </div>
+  </main>
+
+  <!-- Conteneur vide pour le menu -->
+  <div id="menuOverlay"></div>
+
+  <script>
+    const openMenu = document.getElementById('openMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+
+    openMenu.addEventListener('click', () => {
+      // Charge dynamiquement menu.html
+      menuOverlay.innerHTML = `
+        <span id="closeMenu">&times;</span>
+        <iframe src="menu.html"></iframe>
+      `;
+      menuOverlay.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+
+      // Ajoute l’événement de fermeture après chargement
+      document.getElementById('closeMenu').addEventListener('click', () => {
+        menuOverlay.style.display = 'none';
+        document.body.style.overflow = 'auto';
+        menuOverlay.innerHTML = ''; // vide pour libérer la mémoire
+      });
+    });
+
+    // Ferme si on clique à l’extérieur
+    window.addEventListener('click', (e) => {
+      if (e.target === menuOverlay) {
+        menuOverlay.style.display = 'none';
+        document.body.style.overflow = 'auto';
+        menuOverlay.innerHTML = '';
+      }
+    });
+  </script>
+</body>
+</html>

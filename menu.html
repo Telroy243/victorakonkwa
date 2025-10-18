@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accueil - Portfolio Victor Akonkwa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  
+<style>
+/* Overlay panel */
+.side-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    max-width: 90%;
+    height: 100%;
+    background: #8b7c5fff; /* <-- couleur de fond modifiée */
+    box-shadow: -4px 0 25px rgba(0, 0, 0, 0.7);
+    z-index: 99999;
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(.2,.9,.3,1);
+    overflow-y: auto;
+}
+
+
+/* Panel ouvert */
+.side-panel.open {
+    transform: translateX(0);
+}
+
+/* Contenu du menu */
+.menu-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Bouton fermer */
+.menu-content .close {
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    color: #000000ff;
+}
+
+.menu-content .close:hover {
+    color: #e74c3c;
+}
+
+
+/* Liens */
+.menu-content .menu-links a {
+    display: block;
+    padding: 14px 0;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-weight: 500;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.34);
+    transition: all 0.3s;
+}
+
+.menu-content .menu-links a:hover {
+    background: rgb(132, 135, 138);
+    color: #000000ff;
+}
+</style>
+
+<div class="menu-content">
+    
+    <nav class="menu-links">
+        <a href="about.html">À propos</a>
+        <a href="competences.html">Compétences</a>
+        <a href="service.html">Services</a>
+        
+    </nav>
+</div>
+
+
+<script>
+// Fermer le menu
+document.getElementById('closePanel')?.addEventListener('click', function() {
+    const panel = document.getElementById('sidePanel');
+    panel.classList.remove('open');
+    panel.setAttribute('aria-hidden','true');
+    document.getElementById('openMenu').setAttribute('aria-expanded','false');
+});
+</script>
+</body>
+</html>
